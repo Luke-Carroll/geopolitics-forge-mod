@@ -1,0 +1,40 @@
+
+plugins {
+    id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'eclipse'
+    id 'maven-publish'
+}
+
+group = 'com.geopoliticsmod'
+version = '1.0.0'
+archivesBaseName = 'Geopolitics'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run')
+        }
+        server {
+            workingDirectory project.file('run')
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "Geopolitics",
+            "Specification-Vendor": "Geopolitics Dev",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+            "Implementation-Vendor": "Geopolitics Dev"
+        ])
+    }
+}
